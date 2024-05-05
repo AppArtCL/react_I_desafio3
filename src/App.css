@@ -28,16 +28,30 @@ main {
   text-align: center;
 }
 
+.container {
+  margin: 0px;
+  padding: 0px;
+}
+
+.datos-colaboradores {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+}
+
+.listado-colaboradores {
+  margin: 0px;
+  padding: 0px;
+}
+
 .nuevo-colaborador {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0px 0px 0px 1.5rem;
-}
-
-.datos-colaboradores {
-  display: flex;
+  margin: 0px;
+  width: auto;
 }
 
 .agregar-colaborador {
@@ -46,6 +60,7 @@ main {
 
 .alerta {
   margin: 0px;
+  padding: 1rem 0px;
   width: 100%;
   text-align: center;
 }

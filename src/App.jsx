@@ -4,6 +4,10 @@ import Buscador from './components/Buscador';
 import Formulario from './components/Formulario';
 import Alert from './components/Alert';
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 import { BaseColaboradores } from './components/BaseColaboradores';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -40,15 +44,30 @@ function App() {
   return (
     <>
       <main>
-        <p className='titulo'>Lista de colaboradores</p>
-        <Buscador colaboradores={listaColaboradores} listaActualizada={actualizaListaEnUso} />
-        <div className='datos-colaboradores'>
-          <Listado colaboradores={listaEnUso} eliminarColaboradorApp={eliminarColaborador} />
-          <div className='nuevo-colaborador'>
-            <Formulario actualizaErrorApp={actualizaError} actualizaColorErrorApp={actualizaColorError} agregaColaboradorApp={actualizaListaColaboradores} colaboradores={listaColaboradores} />
-            <Alert error={error} colorError={colorError} />
-          </div>
-        </div>
+        <p className="titulo">Lista de colaboradores</p>
+        <Buscador
+          colaboradores={listaColaboradores}
+          listaActualizada={actualizaListaEnUso}
+        />
+        <Container>
+          <Row className="datos-colaboradores">
+            <Col className='listado-colaboradores' sm={12}  xl={8} >
+              <Listado
+                colaboradores={listaEnUso}
+                eliminarColaboradorApp={eliminarColaborador}
+              />
+            </Col>
+            <Col className="nuevo-colaborador" sm={6} xl={4} >
+              <Formulario
+                actualizaErrorApp={actualizaError}
+                actualizaColorErrorApp={actualizaColorError}
+                agregaColaboradorApp={actualizaListaColaboradores}
+                colaboradores={listaColaboradores}
+              />
+              <Alert error={error} colorError={colorError} />
+            </Col>
+          </Row>
+        </Container>
       </main>
     </>
   );

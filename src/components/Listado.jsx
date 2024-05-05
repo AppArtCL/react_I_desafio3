@@ -9,7 +9,7 @@ const Listado = ({ colaboradores, eliminarColaboradorApp }) => {
 
   return (
     <>
-      <Table responsive="sm" striped bordered hover>
+      <Table striped bordered hover> 
         <thead>
           <tr>
             <th>Nombre</th>
@@ -44,3 +44,5 @@ const Listado = ({ colaboradores, eliminarColaboradorApp }) => {
 };
 
 export default Listado
+
+//responsive="sm" 
