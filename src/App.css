@@ -1,0 +1,94 @@
+#root {
+  margin: 0;
+  padding: 2rem;
+  
+  font-family: "Ubuntu", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+}
+
+.titulo {
+  font-weight: 500;
+  font-size: 3rem;
+}
+
+.subtitulo {
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.table {
+  text-align: center;
+}
+
+.nuevo-colaborador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 0px 0px 1.5rem;
+}
+
+.datos-colaboradores {
+  display: flex;
+}
+
+.agregar-colaborador {
+  margin: 0px 0px 1rem 0px;
+}
+
+.alerta {
+  margin: 0px;
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  color: white;
+  background-color: orange;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: red;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.boton-borrar {
+  padding: 0rem 1.2rem;
+}
+
+.btn {
+  width: 100%;
+  background-color: rgb(82, 0, 255);
+}
+.btn:hover {
+  background-color: rgb(82, 0, 255);
+  border-color: red;
+}
+
+.texto-buscar {
+  margin: 0px 0px 1rem 0px;
+  padding: 0.5rem 1rem;
+  width: 24rem;
+  border-color: lightgray;
+  border-width: 0.5px;
+  border-radius: 5px;
+}
+
