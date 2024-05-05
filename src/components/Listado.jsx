@@ -1,6 +1,11 @@
 import Table from 'react-bootstrap/Table';
 
-const Listado = ({ colaboradores }) => {
+const Listado = ({ colaboradores, eliminarColaboradorApp }) => {
+
+  const eliminarColaborador = (idEliminado) => {
+    eliminarColaboradorApp(idEliminado)
+    console.log(idEliminado)
+  }
 
   return (
     <>
@@ -26,7 +31,7 @@ const Listado = ({ colaboradores }) => {
               <td>
                 <button
                   className="boton-borrar"
-                  onClick={() => eliminarColaborador(colaborador)}>
+                  onClick={() => eliminarColaborador(colaborador.id)}>
                   Borrar
                 </button>
               </td>

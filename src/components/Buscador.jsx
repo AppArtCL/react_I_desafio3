@@ -8,12 +8,9 @@ const Buscador = ({ colaboradores, listaActualizada}) => {
 
     function filtrarColaboradores(lista, palabra) {
         return lista.filter((item) => (
-            item.nombre.toLowerCase().includes(palabra.toLowerCase()) || 
-            item.correo.toLowerCase().includes(palabra.toLowerCase()) ||
-            item.edad.toLowerCase().includes(palabra.toLowerCase()) ||
-            item.cargo.toLowerCase().includes(palabra.toLowerCase()) ||
-            item.telefono.toLowerCase().includes(palabra.toLowerCase())
-        ))
+            Object.values(item).some(campo =>
+                campo.toString().toLowerCase().includes(palabra.toLowerCase())
+        )))
     }
 
     const buscarTexto = (e) => {

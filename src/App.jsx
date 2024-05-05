@@ -13,9 +13,15 @@ function App() {
 
   const [listaColaboradores, setListaColaboradores] = useState(BaseColaboradores)
   const actualizaListaColaboradores = (data) => {
-    setListaColaboradores(data)
+    setListaColaboradores([...listaColaboradores, data])
+    setListaEnUso([...listaColaboradores, data])
   }
-  
+  const eliminarColaborador = (idEliminado) => {
+    const listaNueva = listaColaboradores.filter(colaborador => colaborador.id != idEliminado)
+    setListaColaboradores(listaNueva)
+    setListaEnUso(listaNueva)
+  }
+
   const [listaEnUso, setListaEnUso] = useState(BaseColaboradores)
   const actualizaListaEnUso = (data) => {
     setListaEnUso(data)
@@ -37,9 +43,9 @@ function App() {
         <p className='titulo'>Lista de colaboradores</p>
         <Buscador colaboradores={listaColaboradores} listaActualizada={actualizaListaEnUso} />
         <div className='datos-colaboradores'>
-          <Listado colaboradores={listaEnUso} />
+          <Listado colaboradores={listaEnUso} eliminarColaboradorApp={eliminarColaborador} />
           <div className='nuevo-colaborador'>
-            <Formulario actualizaErrorApp={actualizaError} actualizaColorErrorApp={actualizaColorError}  />
+            <Formulario actualizaErrorApp={actualizaError} actualizaColorErrorApp={actualizaColorError} agregaColaboradorApp={actualizaListaColaboradores} colaboradores={listaColaboradores} />
             <Alert error={error} colorError={colorError} />
           </div>
         </div>

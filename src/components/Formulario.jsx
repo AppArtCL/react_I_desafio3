@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap"
 import Button from "react-bootstrap/Button"
 
 
-const Formulario = ({ actualizaErrorApp, actualizaColorErrorApp }) => {
+const Formulario = ({ actualizaErrorApp, actualizaColorErrorApp, agregaColaboradorApp, colaboradores }) => {
   const [validated, setValidated] = useState(false);
   const [formData, setFormData] = useState({
     nombre: "",
@@ -13,22 +13,37 @@ const Formulario = ({ actualizaErrorApp, actualizaColorErrorApp }) => {
     telefono: "",
   });
 
+  function creaColaborador() {
+    const nuevoID = Number(colaboradores[colaboradores.length - 1].id) + 1  
+    const datosColaborador = {}
+    datosColaborador.id = nuevoID
+    datosColaborador.nombre = formData.nombre
+    datosColaborador.correo = formData.correo
+    datosColaborador.edad = formData.edad
+    datosColaborador.cargo = formData.cargo
+    datosColaborador.telefono = formData.telefono
+    return datosColaborador
+  }
+
   const validarUsuario = (e) => {
     const form = e.currentTarget;
     e.preventDefault();
     if (form.checkValidity() === false) {
-      actualizaErrorApp("Completa todos los datos!")
-      actualizaColorErrorApp("danger")
-      setValidated(true)
+      actualizaErrorApp("Completa todos los datos!");
+      actualizaColorErrorApp("danger");
+      setValidated(true);
     } else {
-      actualizaErrorApp("Colaborador agregado!")
-      actualizaColorErrorApp("success")
-      formData.nombre = ""
-      formData.correo = ""
-      formData.edad = ""
-      formData.cargo = ""
-      formData.telefono = ""
-      setValidated(false)
+      const colaborador = creaColaborador(formData)
+      agregaColaboradorApp(colaborador)
+      actualizaErrorApp("Colaborador agregado!");
+      actualizaColorErrorApp("success");
+      formData.nombre = "";
+      formData.correo = "";
+      formData.edad = "";
+      formData.cargo = "";
+      formData.telefono = "";
+      setValidated(false);
+      e.stopPropagation()
     }
   };
 
@@ -58,10 +73,13 @@ const Formulario = ({ actualizaErrorApp, actualizaColorErrorApp }) => {
             placeholder="Nombre del colaborador"
             value={formData.nombre}
             onChange={funcionOnChange}
-            pattern="^[a-zA-Z0-9]+$"
+            pattern='.{1,}'
             required
-            isInvalid={validated && !/^[a-zA-Z0-9]+$/.test(formData.nombre)}
+            isInvalid={validated && !/.{1,}/.test(formData.nombre)}
           />
+          <Form.Control.Feedback type="invalid">
+            El campo no puede estar vacío.
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control
@@ -99,10 +117,13 @@ const Formulario = ({ actualizaErrorApp, actualizaColorErrorApp }) => {
             placeholder="Cargo del colaborador"
             value={formData.cargo}
             onChange={funcionOnChange}
-            pattern="^[a-zA-Z0-9]+$"
+            pattern='.{1,}'
             required
-            isInvalid={validated && !/^[a-zA-Z0-9]+$/.test(formData.cargo)}
+            isInvalid={validated && !/.{1,}/.test(formData.cargo)}
           />
+          <Form.Control.Feedback type="invalid">
+            El campo no puede estar vacío.
+          </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPhone">
           <Form.Control
@@ -129,5 +150,4 @@ const Formulario = ({ actualizaErrorApp, actualizaColorErrorApp }) => {
 
 export default Formulario;
 
-//textos permitir caracteres especiales
 //guardar
